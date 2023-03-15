@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="usages_array">
+        <item>min/h</item>
+        <item>h/day</item>
+        <item>days/month</item>
+    </string-array>
+</resources>

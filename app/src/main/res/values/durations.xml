@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="durations_array">
+        <item>min</item>
+        <item>h</item>
+        <item>day(s)</item>
+        <item>month(s)</item>
+    </string-array>
+</resources>

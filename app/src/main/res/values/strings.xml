@@ -17,4 +17,7 @@
     <string name="power">Power:</string>
     <string name="duration">Duration:</string>
     <string name="usage">Usage:</string>
+    <string name="currency">Currency:</string>
+    <string name="price">Price:</string>
+    <string name="kwh">kWh</string>
 </resources>

@@ -1,13 +1,13 @@
 package com.sorychan.elecalc.data
 
-enum class Power(val unit: String) {
-    mW("mW"), W("W"), kW("kW"), MW("MW")
+enum class Power {
+    mW, W, kW, MW
 }
 
-enum class Duration(val unit: String) {
-    MIN("min"), H("h"), D("days"), M("months"), Y("years")
+enum class Duration {
+    MIN, H, D, M, Y
 }
 
-enum class Usage(val unit: String) {
-    MH("min/h"), HD("hours/day"), DM("days/month")
+enum class Usage {
+    MH, HD, DM
 }

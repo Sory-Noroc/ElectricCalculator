@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="powers_array">
+        <item>mW</item>
+        <item>W</item>
+        <item>kW</item>
+    </string-array>
+</resources>

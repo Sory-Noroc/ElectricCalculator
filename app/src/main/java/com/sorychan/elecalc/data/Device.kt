@@ -1,7 +1,5 @@
 package com.sorychan.elecalc.data
 
-import com.sorychan.elecalc.viewmodels.DevicesViewModel
-
 class Device(val name: String = "Device",
              val power: Long, val powerUnit: Power = Power.kW,
              val duration: Long, val durationUnit: Duration = Duration.D,
