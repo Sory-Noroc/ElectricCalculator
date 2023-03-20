@@ -1,5 +1,6 @@
 package com.sorychan.elecalc.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -40,51 +41,56 @@ class AddDeviceFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val powerSpinner: Spinner? = getView()?.findViewById(R.id.power_spinner)
-        powerSpinner?.let {
-            ArrayAdapter.createFromResource(
-                requireContext(),
-                R.array.powers_array,
-                android.R.layout.simple_spinner_item
-            ).also { adapter ->
-                // Specify the layout to use when the list of choices appears
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                // Apply the adapter to the spinner
-                it.adapter = adapter
-            }
+        val powerSpinner: Spinner = binding.powerSpinner
+        val powerOptions = listOf(Power.mW, Power.W, Power.kW)
+        powerSpinner.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, powerOptions).also {
+            it.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         }
-        powerSpinner?.setSelection(2)
+        powerSpinner.setSelection(2)
 
-        val durationSpinner: Spinner? = getView()?.findViewById(R.id.duration_spinner)
-        durationSpinner?.let {
-            ArrayAdapter.createFromResource(
-                requireContext(),
-                R.array.durations_array,
-                android.R.layout.simple_spinner_item
-            ).also { adapter ->
-                // Specify the layout to use when the list of choices appears
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                // Apply the adapter to the spinner
-                it.adapter = adapter
-            }
+        val durationSpinner: Spinner = binding.durationSpinner
+        val durationOptions = listOf(Duration.MIN, Duration.H, Duration.D, Duration.M)
+        durationSpinner.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, durationOptions).also {
+            it.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         }
-        durationSpinner?.setSelection(2)
+        durationSpinner.setSelection(2)
 
-        val usageSpinner: Spinner? = getView()?.findViewById(R.id.usage_spinner)
-        usageSpinner?.let {
-            ArrayAdapter.createFromResource(
-                requireContext(),
-                R.array.usages_array,
-                android.R.layout.simple_spinner_item
-            ).also { adapter ->
-                // Specify the layout to use when the list of choices appears
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                // Apply the adapter to the spinner
-                it.adapter = adapter
+        val usageSpinner: Spinner = binding.usageSpinner
+        val usageOptions = listOf(Usage.MH.text, Usage.HD.text, Usage.DM.text)
+        usageSpinner.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, usageOptions).also {
+            it.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        }
+        usageSpinner.setSelection(1)
+
+        binding.addButton.setOnClickListener {
+            val name = binding.nameInput.text
+            val power = binding.powerInput.text
+            val duration = binding.durationInput.text
+            val usage = binding.usageInput.text
+
+            if (!name.isNullOrBlank() && power?.isDigitsOnly() == true
+                && duration?.isDigitsOnly() == true && usage?.isDigitsOnly() == true
+            ) {
+                val device = Device(name.toString(),
+                                    power.toString().toLong(), powerSpinner.selectedItem as Power,
+                                    duration.toString().toLong(), durationSpinner.selectedItem as Duration,
+                                    usage.toString().toLong(), usageSpinner.selectedItem.toString()
+                )
+//                device.calculateCost()
+                val price = requireContext().getSharedPreferences("prefs", Context.MODE_PRIVATE).getLong("price", 0)
+                device.calculateCost(price)
+                viewModel.addDevice(device)
+                name.clear()
+                power.clear()
+                duration.clear()
+                usage.clear()
+            } else {
+                Toast.makeText(context, "Please fill all fields correctly", Toast.LENGTH_LONG)
+                    .show()
             }
         }
-        usageSpinner?.setSelection(1)
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

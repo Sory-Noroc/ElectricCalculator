@@ -32,14 +32,31 @@ class DevicesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val devicesViewModel =
-            ViewModelProvider(this)[DevicesViewModel::class.java]
 
         _binding = FragmentDevicesBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        return binding.root
+    }
 
-        val textView: TextView = binding.textHome
-        return root
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        recyclerView = binding.devicesRecyclerView
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        val adapter = DeviceAdapter(requireContext(), viewModel)
+        recyclerView.adapter = adapter
+        viewModel.deviceList.observe(viewLifecycleOwner) {
+            adapter.submitList(it)
+            Log.i(TAG, "Observing list: $it")
+        }
+
+        if (viewModel.deviceList.value?.isEmpty() == true) {
+            Log.i(TAG, "Empty list")
+            binding.textNoDevices.visibility = View.VISIBLE
+            binding.devicesRecyclerView.visibility = View.INVISIBLE
+        } else {
+            // If we got some devices in the list
+            binding.textNoDevices.visibility = View.INVISIBLE
+            binding.devicesRecyclerView.visibility = View.VISIBLE
+        }
     }
 
     override fun onDestroyView() {

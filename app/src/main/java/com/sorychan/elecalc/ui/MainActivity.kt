@@ -1,5 +1,6 @@
 package com.sorychan.elecalc.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import com.google.android.material.navigation.NavigationView
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_devices, R.id.nav_add_devices, R.id.nav_settings
             ), drawerLayout
         )
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }

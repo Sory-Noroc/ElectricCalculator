@@ -1,158 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".ui.AddDeviceFragment"
-    android:columnCount="3"
-    android:rowCount="4"
-    android:padding="20dp">
-
-    <TextView
-        android:id="@+id/name_text"
-        style="@style/TextAppearance.AppCompat.Headline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="0"
-        android:layout_column="0"
-        android:text="@string/name"
-        android:layout_gravity="bottom"
-        app:layout_constraintBottom_toBottomOf="@id/name_input_layout"
-        app:layout_constraintLeft_toLeftOf="parent" />
+    android:padding="20dp"
+    tools:context=".ui.AddDeviceFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/name_input_layout"
-        android:layout_width="180dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="@dimen/edit_text_width"
         android:layout_height="wrap_content"
-        android:layout_row="0"
-        android:layout_column="1"
-        app:layout_constraintWidth_default="spread"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
+        android:hint="@string/name_text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/name_input"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </com.google.android.material.textfield.TextInputEditText>
+            android:layout_height="match_parent"
+            android:maxLength="12"/>
     </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        style="@style/TextAppearance.AppCompat.Headline"
-        android:id="@+id/power_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/power"
-        android:layout_row="1"
-        android:layout_column="0"
-        android:layout_gravity="bottom"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/power_input_layout"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/power_input_layout"
-        android:layout_width="180dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="@dimen/edit_text_width"
         android:layout_height="wrap_content"
-        android:layout_row="1"
-        android:layout_column="1"
         android:layout_marginTop="20dp"
-        app:layout_constraintRight_toLeftOf="@id/power_spinner"
-        app:layout_constraintWidth_default="spread"
+        android:hint="@string/power_text"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/name_input_layout">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/power_input"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </com.google.android.material.textfield.TextInputEditText>
+            android:layout_height="match_parent"
+            android:maxLength="4"
+            android:inputType="numberDecimal"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Spinner
         android:id="@+id/power_spinner"
-        android:layout_width="wrap_content"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:layout_width="@dimen/spinner_width"
         android:layout_height="wrap_content"
-        android:layout_row="1"
-        android:layout_column="2"
-        android:layout_gravity="center"
+        android:textAlignment="center"
+        app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toBottomOf="@id/power_input_layout"
-        app:layout_constraintRight_toRightOf="parent"/>
-
-    <TextView
-        style="@style/TextAppearance.AppCompat.Headline"
-        android:id="@+id/duration_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/duration"
-        android:layout_row="2"
-        android:layout_column="0"
-        android:layout_gravity="bottom"
-        android:layout_marginRight="10dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/duration_input_layout"
-        tools:ignore="RtlHardcoded" />
+        app:layout_constraintStart_toEndOf="@+id/power_input_layout"
+        app:layout_constraintTop_toTopOf="@+id/power_input_layout" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/duration_input_layout"
-        android:layout_width="180dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="@dimen/edit_text_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_row="2"
-        android:layout_column="1"
-        app:layout_constraintWidth_default="spread"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/power_input_layout">
+        android:hint="@string/duration_text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/power_input_layout"
+        app:layout_constraintWidth_default="spread">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/duration_input"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </com.google.android.material.textfield.TextInputEditText>
+            android:layout_height="match_parent"
+            android:maxLength="4"
+            android:inputType="numberDecimal"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Spinner
         android:id="@+id/duration_spinner"
-        android:layout_width="wrap_content"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:layout_width="@dimen/spinner_width"
         android:layout_height="wrap_content"
-        android:layout_row="2"
-        android:layout_column="2"
-        android:layout_gravity="center"
-        app:layout_constraintBottom_toBottomOf="@id/power_input_layout"
-        app:layout_constraintRight_toRightOf="parent"/>
-
-    <TextView
-        android:id="@+id/usage_text"
-        style="@style/TextAppearance.AppCompat.Headline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="3"
-        android:layout_column="0"
-        android:text="@string/usage"
-        android:layout_gravity="bottom"
-        app:layout_constraintBottom_toBottomOf="@id/usage_input_layout"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@id/duration_input_layout"
+        app:layout_constraintLeft_toRightOf="@id/duration_input_layout"
+        app:layout_constraintTop_toTopOf="@id/duration_input_layout" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/usage_input_layout"
-        android:layout_width="180dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="@dimen/edit_text_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_row="3"
-        android:layout_column="1"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintWidth_default="spread"
+        android:hint="@string/usage_text"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/duration_input_layout">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/usage_input"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </com.google.android.material.textfield.TextInputEditText>
+            android:layout_height="match_parent"
+            android:maxLength="4"
+            android:inputType="numberDecimal"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Spinner
         android:id="@+id/usage_spinner"
-        android:layout_width="wrap_content"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:layout_width="@dimen/spinner_width"
         android:layout_height="wrap_content"
-        android:layout_row="3"
-        android:layout_column="2"
-        android:layout_gravity="center"
-        app:layout_constraintBottom_toBottomOf="@id/power_input_layout"
-        app:layout_constraintRight_toRightOf="parent"/>
-</GridLayout>
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@id/usage_input_layout"
+        app:layout_constraintLeft_toRightOf="@id/usage_input_layout"
+        app:layout_constraintTop_toTopOf="@id/usage_input_layout" />
+
+    <Button
+        android:id="@+id/add_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/add"
+        app:layout_constraintTop_toBottomOf="@id/usage_input_layout"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/hint_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/input_name_power_duration_and_usage_of_device_nex_duration_2_days_usage_4_hours_per_day_8h_total"
+        app:layout_constraintTop_toBottomOf="@id/add_button"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        style="@style/TextAppearance.AppCompat.Body1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/d_day_nm_month_nmh_minutes_per_hour_nhd_hours_per_day_ndm_days_per_month"
+        android:layout_margin="10dp"
+        app:layout_constraintTop_toBottomOf="@id/hint_text"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
