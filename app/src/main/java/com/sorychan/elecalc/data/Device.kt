@@ -3,7 +3,8 @@ package com.sorychan.elecalc.data
 class Device(val name: String = "Device",
              val power: Long, val powerUnit: Power = Power.kW,
              val duration: Long, val durationUnit: Duration = Duration.D,
-             val usage: Long, val usageUnit: Usage = Usage.HD) {
+             val usage: Long, val usageUnit: String = Usage.HD.text,
+             var consumption: Double = 0.0, var cost: Long = 0) {
 
     /** Keys:
      * P = power
@@ -25,7 +26,7 @@ class Device(val name: String = "Device",
             Power.W  -> power.toDouble() / 1000
             Power.mW -> power.toDouble() / 1_000_000
         }
-        temp["P"] = defPower
+        temp["Power"] = defPower
 
         val defDuration: Double = when(durationUnit) {
             Duration.MIN-> duration.toDouble() / 1440
@@ -34,14 +35,25 @@ class Device(val name: String = "Device",
             Duration.M  -> duration.toDouble() * 30
             Duration.Y  -> duration.toDouble() * 365
         }
-        temp["D"] = defDuration
+        temp["Days"] = defDuration
 
         val defUsage: Double = when(usageUnit) {
-            Usage.MH -> 0.4 * usage
-            Usage.HD -> 1.0 * usage
-            Usage.DM -> 0.8 * usage
+            Usage.MH.text -> 0.4 * usage
+            Usage.HD.text -> 1.0 * usage
+            Usage.DM.text -> 0.8 * usage
+            else -> usage.toDouble()
         }
-        temp["U"] = defUsage
+        temp["Usage"] = defUsage
         defaults = temp
+    }
+
+    fun calculateCost(price: Long) {
+        // The consumption is measured in kWh
+        consumption = defaults["Power"]?.times(
+            defaults["Days"]?.times(
+                defaults["Usage"] ?: 0.0
+            ) ?: 0.0
+        ) ?: 0.0
+        cost = (price * consumption).toLong()
     }
 }

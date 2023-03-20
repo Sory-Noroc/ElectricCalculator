@@ -20,4 +20,17 @@
     <string name="currency">Currency:</string>
     <string name="price">Price:</string>
     <string name="kwh">kWh</string>
+    <string name="power_text">Power</string>
+    <string name="name_text">Name</string>
+    <string name="duration_text">Duration</string>
+    <string name="usage_text">Usage</string>
+    <string name="add">Add</string>
+    <string name="d_day_nm_month_nmh_minutes_per_hour_nhd_hours_per_day_ndm_days_per_month">D - Day\nM - Month\nY - Year</string>
+    <string name="input_name_power_duration_and_usage_of_device_nex_duration_2_days_usage_4_hours_per_day_8h_total">Input name, power, duration and usage of device. \nEx: duration - 2 days, usage - 4 hours per day(8h total)</string>
+    <string name="no_devices_added_yet">No devices added yet</string>
+    <string name="delete_button">Delete button</string>
+    <string name="power_string">Power: %d %s</string>
+    <string name="duration_string">Duration: %d %s</string>
+    <string name="usage_string">Usage: %d %s</string>
+    <string name="cost_string">Cost: %d %s</string>
 </resources>
