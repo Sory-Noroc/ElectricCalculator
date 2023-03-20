@@ -1,14 +1,21 @@
 package com.sorychan.elecalc.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.sorychan.elecalc.adapters.DeviceAdapter
 import com.sorychan.elecalc.databinding.FragmentDevicesBinding
 import com.sorychan.elecalc.viewmodels.DevicesViewModel
+
+const val TAG = "DevicesFragment"
 
 class DevicesFragment : Fragment() {
 
@@ -17,6 +24,8 @@ class DevicesFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private val viewModel: DevicesViewModel by activityViewModels()
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -6,9 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
+import androidx.core.text.isDigitsOnly
 import androidx.fragment.app.Fragment
-import com.sorychan.elecalc.R
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import com.sorychan.elecalc.data.Device
+import com.sorychan.elecalc.data.Duration
+import com.sorychan.elecalc.data.Power
+import com.sorychan.elecalc.data.Usage
 import com.sorychan.elecalc.databinding.FragmentAddDevicesBinding
+import com.sorychan.elecalc.viewmodels.DevicesViewModel
 
 class AddDeviceFragment : Fragment() {
 
@@ -17,6 +26,7 @@ class AddDeviceFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private val viewModel: DevicesViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

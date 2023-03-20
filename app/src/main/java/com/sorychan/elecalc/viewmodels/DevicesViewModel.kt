@@ -1,25 +1,30 @@
 package com.sorychan.elecalc.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.sorychan.elecalc.data.Duration
-import com.sorychan.elecalc.data.Power
+import com.sorychan.elecalc.data.Device
+
+private const val TAG = "DevicesViewModel"
 
 class DevicesViewModel : ViewModel() {
 
-    private val _powerUnit = MutableLiveData<Power>().apply {
-        value = Power.W
+    private val _deviceList = MutableLiveData<MutableList<Device>>().apply {
+        value = mutableListOf()
     }
-    val powerUnit: LiveData<Power> = _powerUnit
+    val deviceList: LiveData<MutableList<Device>> = _deviceList
 
-    private val _durationUnit = MutableLiveData<Duration>().apply {
-        value = Duration.M
-    }
-    val durationUnit: LiveData<Duration> = _durationUnit
+    val totalCost = MutableLiveData<Long>(0)
 
-    private val _usageUnit = MutableLiveData<Duration>().apply {
-        value = Duration.M
+    val totalConsumption = MutableLiveData(0.0)
+
+    fun addDevice(device: Device) {
+        val list = deviceList.value ?: mutableListOf()
+        list.add(device)
+        totalCost.value = totalCost.value?.plus(device.cost)
+        totalConsumption.value = totalConsumption.value?.plus(device.consumption)
+        _deviceList.value = list
+        Log.i(TAG, "Added to list: ${_deviceList.value} with consumption ${totalConsumption.value} and cost of ${totalConsumption.value}")
     }
-    val usageUnit: LiveData<Duration> = _durationUnit
 }
