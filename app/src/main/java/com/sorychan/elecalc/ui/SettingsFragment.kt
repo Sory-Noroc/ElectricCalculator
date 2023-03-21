@@ -37,7 +37,6 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         val sharedPreferences = requireContext().getSharedPreferences("prefs", Context.MODE_PRIVATE)
 
         val currencySpinner: Spinner = binding.currencySpinner
@@ -61,7 +60,7 @@ class SettingsFragment : Fragment() {
             }
         }
 
-        binding.priceInput.setText(sharedPreferences.getLong("price", 0).toString())
+        binding.priceInput.setText(sharedPreferences.getLong("price", 0L).toString())
         binding.priceInput.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 val editor = sharedPreferences.edit()
