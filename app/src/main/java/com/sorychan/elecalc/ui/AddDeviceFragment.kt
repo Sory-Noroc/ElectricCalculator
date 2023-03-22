@@ -11,8 +11,6 @@ import android.widget.Toast
 import androidx.core.text.isDigitsOnly
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import com.sorychan.elecalc.data.Device
 import com.sorychan.elecalc.data.Duration
 import com.sorychan.elecalc.data.Power
@@ -71,12 +69,12 @@ class AddDeviceFragment : Fragment() {
             if (!name.isNullOrBlank() && power?.isDigitsOnly() == true
                 && duration?.isDigitsOnly() == true && usage?.isDigitsOnly() == true
             ) {
-                val device = Device(name.toString(),
-                                    power.toString().toLong(), powerSpinner.selectedItem as Power,
-                                    duration.toString().toLong(), durationSpinner.selectedItem as Duration,
-                                    usage.toString().toLong(), usageSpinner.selectedItem.toString()
+                val device = Device(
+                    name.toString(),
+                    power.toString().toLong(), powerSpinner.selectedItem as Power,
+                    duration.toString().toLong(), durationSpinner.selectedItem as Duration,
+                    usage.toString().toLong(), usageSpinner.selectedItem.toString()
                 )
-//                device.calculateCost()
                 val price = requireContext().getSharedPreferences("prefs", Context.MODE_PRIVATE).getLong("price", 0)
                 device.calculateCost(price)
                 viewModel.addDevice(device)
@@ -90,7 +88,6 @@ class AddDeviceFragment : Fragment() {
             }
         }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
