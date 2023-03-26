@@ -7,8 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sorychan.elecalc.adapters.DeviceAdapter
@@ -32,7 +30,6 @@ class DevicesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentDevicesBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -47,7 +44,7 @@ class DevicesFragment : Fragment() {
             adapter.submitList(it)
             Log.i(TAG, "Observing list: $it")
         }
-
+        // Currency changes for every item instead of changing only for next items that will be added
         if (viewModel.deviceList.value?.isEmpty() == true) {
             Log.i(TAG, "Empty list")
             binding.textNoDevices.visibility = View.VISIBLE
