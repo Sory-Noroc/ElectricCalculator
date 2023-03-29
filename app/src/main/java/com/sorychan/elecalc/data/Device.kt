@@ -1,10 +1,14 @@
 package com.sorychan.elecalc.data
 
-class Device(val name: String = "Device",
-             val power: Long, val powerUnit: Power = Power.kW,
-             val duration: Long, val durationUnit: Duration = Duration.D,
-             val usage: Long, val usageUnit: String = Usage.HD.text,
-             var consumption: Double = 0.0, var cost: Long = 0) {
+class Device(val power: Long,
+             val duration: Long,
+             val usage: Long,
+             val powerUnit: Power = Power.kW,
+             val durationUnit: Duration = Duration.D,
+             val usageUnit: String = Usage.HD.text,
+             val name: String = "Device",
+             var consumption: Double = 0.0,
+             var cost: Long = 0) {
 
     /** Keys:
      * P = power
@@ -45,6 +49,24 @@ class Device(val name: String = "Device",
         }
         temp["Usage"] = defUsage
         defaults = temp
+    }
+
+    fun formatCost(): String {
+        var doubleCost = cost.toDouble()
+        var iterations = 0
+        while (doubleCost / 1000 >= 1) {
+            iterations++
+            doubleCost /= 1000
+        }
+        return when (iterations) {
+            0 -> cost.toString()
+            1 -> doubleCost.toLong().toString() + "K"
+            2 -> doubleCost.toLong().toString() + "M"
+            3 -> doubleCost.toLong().toString() + "B"
+            4 -> doubleCost.toLong().toString() + "T"
+            5 -> doubleCost.toLong().toString() + "Q"
+            else -> cost.toString()
+        }
     }
 
     fun calculateCost(price: Long) {

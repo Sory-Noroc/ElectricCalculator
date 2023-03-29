@@ -2,13 +2,13 @@ package com.sorychan.elecalc.ui
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
-import androidx.core.text.isDigitsOnly
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.sorychan.elecalc.data.Device
@@ -17,6 +17,8 @@ import com.sorychan.elecalc.data.Power
 import com.sorychan.elecalc.data.Usage
 import com.sorychan.elecalc.databinding.FragmentAddDevicesBinding
 import com.sorychan.elecalc.viewmodels.DevicesViewModel
+
+private const val TAG = "AddDeviceFragment"
 
 class AddDeviceFragment : Fragment() {
 
@@ -66,17 +68,46 @@ class AddDeviceFragment : Fragment() {
             val duration = binding.durationInput.text
             val usage = binding.usageInput.text
 
-            if (!name.isNullOrBlank() && power?.isDigitsOnly() == true
-                && duration?.isDigitsOnly() == true && usage?.isDigitsOnly() == true
+            if (!name.isNullOrBlank() && !power.isNullOrBlank()
+                && !duration.isNullOrBlank() && !usage.isNullOrBlank()
             ) {
+                val powerUnit = powerSpinner.selectedItem as Power
+                val durationUnit = durationSpinner.selectedItem as Duration
+                val usageUnit = usageSpinner.selectedItem
+
+                // Avoid bad input like 26 hours/day on usage
+                var badUsage = false
+                when (usageUnit) {
+                    usageOptions[1] -> if (usage.toString().toLong() > 24) {
+                        Log.d(TAG, "Bad usage hours")
+                        badUsage = true
+                    }
+                    usageOptions[2] -> if (usage.toString().toLong() > 31) {
+                        Log.d(TAG, "Bad usage days")
+                        badUsage = true
+                    }
+                    usageOptions[0] -> if (usage.toString().toLong() > 60) {
+                        Log.d(TAG, "Bad usage minutes")
+                        badUsage = true
+                    }
+                }
+                Log.d(TAG, "Bad usage: $badUsage")
+                if (badUsage) {
+                    Toast.makeText(context, "Usage too big!", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+
                 val device = Device(
-                    name.toString(),
-                    power.toString().toLong(), powerSpinner.selectedItem as Power,
-                    duration.toString().toLong(), durationSpinner.selectedItem as Duration,
-                    usage.toString().toLong(), usageSpinner.selectedItem.toString()
+                    name = name.toString(),
+                    power = power.toString().toLong(), powerUnit = powerUnit,
+                    duration = duration.toString().toLong(), durationUnit = durationUnit,
+                    usage = usage.toString().toLong(), usageUnit = usageUnit.toString()
                 )
                 val price = requireContext().getSharedPreferences("prefs", Context.MODE_PRIVATE).getLong("price", 0)
-                device.calculateCost(price)
+                device.apply {
+                    calculateCost(price)
+                    formatCost()
+                }
                 viewModel.addDevice(device)
                 name.clear()
                 power.clear()

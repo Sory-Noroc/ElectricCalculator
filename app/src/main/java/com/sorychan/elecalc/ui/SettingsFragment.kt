@@ -16,6 +16,8 @@ import com.sorychan.elecalc.R
 import com.sorychan.elecalc.databinding.FragmentSettingsBinding
 import com.sorychan.elecalc.viewmodels.DevicesViewModel
 
+private const val TAG = "SettingsFragment"
+
 class SettingsFragment : Fragment() {
 
     private var _binding: FragmentSettingsBinding? = null

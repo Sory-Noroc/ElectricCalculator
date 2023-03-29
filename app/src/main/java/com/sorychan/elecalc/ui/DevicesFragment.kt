@@ -13,7 +13,7 @@ import com.sorychan.elecalc.adapters.DeviceAdapter
 import com.sorychan.elecalc.databinding.FragmentDevicesBinding
 import com.sorychan.elecalc.viewmodels.DevicesViewModel
 
-const val TAG = "DevicesFragment"
+private const val TAG = "DevicesFragment"
 
 class DevicesFragment : Fragment() {
 
