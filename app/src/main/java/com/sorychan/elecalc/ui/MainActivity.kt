@@ -1,6 +1,5 @@
 package com.sorychan.elecalc.ui
 
-import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import com.google.android.material.navigation.NavigationView

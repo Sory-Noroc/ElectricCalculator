@@ -23,6 +23,9 @@
         <action
             android:id="@+id/action_nav_add_devices_to_nav_devices"
             app:destination="@id/nav_devices" />
+        <action
+            android:id="@+id/action_nav_add_devices_to_nav_settings"
+            app:destination="@id/nav_settings" />
     </fragment>
 
     <fragment

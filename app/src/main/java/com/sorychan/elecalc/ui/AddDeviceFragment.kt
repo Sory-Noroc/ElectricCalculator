@@ -11,6 +11,8 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.sorychan.elecalc.R
 import com.sorychan.elecalc.data.Device
 import com.sorychan.elecalc.data.Duration
 import com.sorychan.elecalc.data.Power
@@ -68,6 +70,11 @@ class AddDeviceFragment : Fragment() {
             val duration = binding.durationInput.text
             val usage = binding.usageInput.text
 
+            if (sharedPreferences.getLong("price", 0) == 0L) {
+                Toast.makeText(context, "Please input a price first!", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_nav_add_devices_to_nav_settings)
+            }
+
             if (!name.isNullOrBlank() && !power.isNullOrBlank()
                 && !duration.isNullOrBlank() && !usage.isNullOrBlank()
             ) {
@@ -117,6 +124,7 @@ class AddDeviceFragment : Fragment() {
                 Toast.makeText(context, "Please fill all fields correctly", Toast.LENGTH_LONG)
                     .show()
             }
+            findNavController().navigate(R.id.action_nav_add_devices_to_nav_devices)
         }
     }
 
