@@ -3,6 +3,7 @@ package com.sorychan.elecalc.data
 class Device(val power: Long,
              val duration: Long,
              val usage: Long,
+             var currency: String,
              val powerUnit: Power = Power.kW,
              val durationUnit: Duration = Duration.D,
              val usageUnit: String = Usage.HD.text,

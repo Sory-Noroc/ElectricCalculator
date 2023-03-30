@@ -30,7 +30,7 @@
     <string name="power_string">Power: %d %s</string>
     <string name="duration_string">Duration: %d %s</string>
     <string name="usage_string">Usage: %d %s</string>
-    <string name="cost_string">Cost\n%d %s</string>
+    <string name="cost_string">Cost\n%s\n%s</string>
     <string name="calculate_your_electric_costs">Calculate your electric costs</string>
     <string name="elecost">EleCost</string>
 </resources>

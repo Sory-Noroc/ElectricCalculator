@@ -43,6 +43,9 @@ class AddDeviceFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val sharedPreferences = requireContext().getSharedPreferences("prefs", Context.MODE_PRIVATE)
+
+
         val powerSpinner: Spinner = binding.powerSpinner
         val powerOptions = listOf(Power.mW, Power.W, Power.kW)
         powerSpinner.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, powerOptions).also {
@@ -106,15 +109,13 @@ class AddDeviceFragment : Fragment() {
 
                 val device = Device(
                     name = name.toString(),
+                    currency = sharedPreferences.getString("currency", "$") ?: "$",
                     power = power.toString().toLong(), powerUnit = powerUnit,
                     duration = duration.toString().toLong(), durationUnit = durationUnit,
                     usage = usage.toString().toLong(), usageUnit = usageUnit.toString()
                 )
                 val price = requireContext().getSharedPreferences("prefs", Context.MODE_PRIVATE).getLong("price", 0)
-                device.apply {
-                    calculateCost(price)
-                    formatCost()
-                }
+                device.calculateCost(price)
                 viewModel.addDevice(device)
                 name.clear()
                 power.clear()

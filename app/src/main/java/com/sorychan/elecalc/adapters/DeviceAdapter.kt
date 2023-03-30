@@ -27,14 +27,19 @@ class DeviceAdapter(private val context: Context, private val viewModel: Devices
     }
 
     class DeviceViewHolder(private var binding: DeviceItemBinding, private val context: Context, private val viewModel: DevicesViewModel): RecyclerView.ViewHolder(binding.root) {
-        fun bind(device: Device) {
-            val currency = context.getSharedPreferences("prefs", Context.MODE_PRIVATE).getString("currency", "MDL")
 
+        fun bind(device: Device) {
             binding.nameText.text = device.name
             binding.powerText.text = context.getString(R.string.power_string, device.power, device.powerUnit)
             binding.durationText.text = context.getString(R.string.duration_string, device.duration, device.durationUnit)
             binding.usageText.text = context.getString(R.string.usage_string, device.usage, device.usageUnit)
-            binding.costText.text = context.getString(R.string.cost_string, device.cost, currency)
+            binding.costText.text = context.getString(R.string.cost_string, device.formatCost(), device.currency)
+
+            binding.deleteButton.setOnClickListener {
+                viewModel.deviceList.value?.remove(device)
+                viewModel.totalConsumption.value = viewModel.totalConsumption.value?.minus(device.consumption)
+                viewModel.totalCost.value = viewModel.totalCost.value?.minus(device.cost)
+            }
         }
     }
 

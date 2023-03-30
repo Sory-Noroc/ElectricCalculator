@@ -6,10 +6,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.sorychan.elecalc.R
@@ -63,16 +63,11 @@ class SettingsFragment : Fragment() {
         }
 
         binding.priceInput.setText(sharedPreferences.getLong("price", 0L).toString())
-        binding.priceInput.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                val editor = sharedPreferences.edit()
-                editor.putLong("price", binding.priceInput.text.toString().toLong())
-                editor.apply()
-                // TODO: Close the keyboard
-                true
-            } else {
-                false
-            }
+        binding.priceInput.addTextChangedListener {
+            val editor = sharedPreferences.edit()
+            // Making sure the price is 0 if the price field is empty to avoid a crash
+            editor.putLong("price", binding.priceInput.text.toString().let {if (it == "") 0L else it.toLong()})
+            editor.apply()
         }
     }
 
