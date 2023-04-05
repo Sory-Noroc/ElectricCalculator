@@ -1,4 +1,4 @@
-package com.sorychan.elecalc.ui
+package com.sorychan.electricost.ui
 
 import android.os.Bundle
 import android.util.Log
@@ -9,9 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.sorychan.elecalc.adapters.DeviceAdapter
-import com.sorychan.elecalc.databinding.FragmentDevicesBinding
-import com.sorychan.elecalc.viewmodels.DevicesViewModel
+import com.sorychan.electricost.adapters.DeviceAdapter
+import com.sorychan.electricost.databinding.FragmentDevicesBinding
+import com.sorychan.electricost.viewmodels.DevicesViewModel
 
 private const val TAG = "DevicesFragment"
 

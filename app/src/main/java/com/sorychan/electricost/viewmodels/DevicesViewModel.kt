@@ -1,11 +1,11 @@
-package com.sorychan.elecalc.viewmodels
+package com.sorychan.electricost.viewmodels
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.sorychan.elecalc.data.Device
+import com.sorychan.electricost.data.Device
 import kotlinx.coroutines.launch
 
 private const val TAG = "DevicesViewModel"

@@ -1,5 +1,5 @@
 <resources>
-    <style name="Theme.Elecalc" parent="Theme.Material3.Light.NoActionBar">
+    <style name="Theme.ElectriCost" parent="Theme.Material3.Light.NoActionBar">
         <item name="colorPrimary">@color/md_theme_light_primary</item>
         <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_light_primaryContainer</item>
@@ -29,13 +29,13 @@
         <item name="customColorValue">@color/md_theme_light_primaryContainer</item>
     </style>
 
-    <style name="Theme.Elecalc.NoActionBar">
+    <style name="Theme.ElectriCost.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.Elecalc.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="Theme.ElectriCost.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
-    <style name="Theme.Elecalc.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="Theme.ElectriCost.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
 </resources>

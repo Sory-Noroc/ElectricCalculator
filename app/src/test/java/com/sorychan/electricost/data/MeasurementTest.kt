@@ -1,4 +1,4 @@
-package com.sorychan.elecalc.data
+package com.sorychan.electricost.data
 
 import org.junit.Assert.*
 import org.junit.Test

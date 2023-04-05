@@ -1,4 +1,4 @@
-package com.sorychan.elecalc.data
+package com.sorychan.electricost.data
 
 class Device(val power: Long,
              val duration: Long,

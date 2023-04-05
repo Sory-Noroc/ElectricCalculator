@@ -1,4 +1,4 @@
-package com.sorychan.elecalc.adapters
+package com.sorychan.electricost.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.sorychan.elecalc.R
-import com.sorychan.elecalc.data.Device
-import com.sorychan.elecalc.databinding.DeviceItemBinding
-import com.sorychan.elecalc.viewmodels.DevicesViewModel
+import com.sorychan.electricost.R
+import com.sorychan.electricost.data.Device
+import com.sorychan.electricost.databinding.DeviceItemBinding
+import com.sorychan.electricost.viewmodels.DevicesViewModel
 
 class DeviceAdapter(private val context: Context, private val viewModel: DevicesViewModel): ListAdapter<Device, DeviceAdapter.DeviceViewHolder>(DiffCallback) {
 

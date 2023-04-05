@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.sorychan.elecalc'
+    namespace 'com.sorychan.electricost'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.sorychan.elecalc"
+        applicationId "com.sorychan.electricost"
         minSdk 26
         targetSdk 33
         versionCode 1

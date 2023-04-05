@@ -1,4 +1,4 @@
-package com.sorychan.elecalc.ui
+package com.sorychan.electricost.ui
 
 import android.content.Context
 import android.os.Bundle
@@ -12,13 +12,13 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.sorychan.elecalc.R
-import com.sorychan.elecalc.data.Device
-import com.sorychan.elecalc.data.Duration
-import com.sorychan.elecalc.data.Power
-import com.sorychan.elecalc.data.Usage
-import com.sorychan.elecalc.databinding.FragmentAddDevicesBinding
-import com.sorychan.elecalc.viewmodels.DevicesViewModel
+import com.sorychan.electricost.R
+import com.sorychan.electricost.data.Device
+import com.sorychan.electricost.data.Duration
+import com.sorychan.electricost.data.Power
+import com.sorychan.electricost.data.Usage
+import com.sorychan.electricost.databinding.FragmentAddDevicesBinding
+import com.sorychan.electricost.viewmodels.DevicesViewModel
 
 private const val TAG = "AddDeviceFragment"
 

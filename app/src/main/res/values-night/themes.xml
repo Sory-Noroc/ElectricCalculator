@@ -1,6 +1,6 @@
 
 <resources>
-    <style name="Theme.Elecalc" parent="Theme.Material3.Dark.NoActionBar">
+    <style name="Theme.ElectriCost" parent="Theme.Material3.Dark.NoActionBar">
         <item name="colorPrimary">@color/md_theme_dark_primary</item>
         <item name="colorOnPrimary">@color/md_theme_dark_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_dark_primaryContainer</item>
@@ -30,7 +30,7 @@
         <item name="customColorValue">@color/md_theme_dark_onPrimary</item>
     </style>
 
-    <style name="Theme.Elecalc.DrawerBackground" parent="ThemeOverlay.AppCompat.Dark">
+    <style name="Theme.ElectriCost.DrawerBackground" parent="ThemeOverlay.AppCompat.Dark">
         <item name="background">@color/md_theme_dark_primary</item>
     </style>
 

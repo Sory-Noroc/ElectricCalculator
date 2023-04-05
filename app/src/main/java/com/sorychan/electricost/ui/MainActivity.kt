@@ -1,4 +1,4 @@
-package com.sorychan.elecalc.ui
+package com.sorychan.electricost.ui
 
 import android.os.Bundle
 import android.view.Menu
@@ -10,8 +10,8 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
-import com.sorychan.elecalc.R
-import com.sorychan.elecalc.databinding.ActivityMainBinding
+import com.sorychan.electricost.R
+import com.sorychan.electricost.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

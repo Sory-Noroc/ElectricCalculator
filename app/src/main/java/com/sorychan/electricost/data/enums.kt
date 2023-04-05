@@ -1,4 +1,4 @@
-package com.sorychan.elecalc.data
+package com.sorychan.electricost.data
 
 enum class Power {
     mW, W, kW, MW
