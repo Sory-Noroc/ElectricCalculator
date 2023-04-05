@@ -125,7 +125,6 @@ class AddDeviceFragment : Fragment() {
                 Toast.makeText(context, "Please fill all fields correctly", Toast.LENGTH_LONG)
                     .show()
             }
-            findNavController().navigate(R.id.action_nav_add_devices_to_nav_devices)
         }
     }
 

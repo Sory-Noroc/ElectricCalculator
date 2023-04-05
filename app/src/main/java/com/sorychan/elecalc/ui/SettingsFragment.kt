@@ -61,13 +61,14 @@ class SettingsFragment : Fragment() {
                 Log.i(TAG, "Nothing selected")
             }
         }
-
         binding.priceInput.setText(sharedPreferences.getLong("price", 0L).toString())
         binding.priceInput.addTextChangedListener {
             val editor = sharedPreferences.edit()
             // Making sure the price is 0 if the price field is empty to avoid a crash
-            editor.putLong("price", binding.priceInput.text.toString().let {if (it == "") 0L else it.toLong()})
+            val price = binding.priceInput.text.toString().let {if (it == "") 0L else it.toLong()}
+            editor.putLong("price", price)
             editor.apply()
+            viewModel.updateCost(price)
         }
     }
 
