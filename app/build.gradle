@@ -4,6 +4,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('C:\\Users\\sorin\\OneDrive\\Desktop\\Programming\\Kotlin\\keys\\key.jks')
+            storePassword 'Sorincic1'
+            keyAlias 'uploadKey'
+            keyPassword 'Sorincic1'
+        }
+    }
     namespace 'com.sorychan.electricost'
     compileSdk 33
 
