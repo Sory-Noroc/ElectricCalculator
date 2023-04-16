@@ -45,7 +45,6 @@ class AddDeviceFragment : Fragment() {
 
         val sharedPreferences = requireContext().getSharedPreferences("prefs", Context.MODE_PRIVATE)
 
-
         val powerSpinner: Spinner = binding.powerSpinner
         val powerOptions = listOf(Power.mW, Power.W, Power.kW)
         powerSpinner.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, powerOptions).also {

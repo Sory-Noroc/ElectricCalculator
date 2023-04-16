@@ -1,4 +1,3 @@
-
 <resources>
     <style name="Theme.ElectriCost" parent="Theme.Material3.Dark.NoActionBar">
         <item name="colorPrimary">@color/md_theme_dark_primary</item>
@@ -27,11 +26,6 @@
         <item name="colorSurfaceInverse">@color/md_theme_dark_inverseSurface</item>
         <item name="colorOnSurfaceInverse">@color/md_theme_dark_inverseOnSurface</item>
         <item name="colorPrimaryInverse">@color/md_theme_dark_inversePrimary</item>
-        <item name="customColorValue">@color/md_theme_dark_onPrimary</item>
+        <item name="textInputOutlinedStyle">@style/Widget.ElectriCost.TextInputLayout</item>
     </style>
-
-    <style name="Theme.ElectriCost.DrawerBackground" parent="ThemeOverlay.AppCompat.Dark">
-        <item name="background">@color/md_theme_dark_primary</item>
-    </style>
-
 </resources>

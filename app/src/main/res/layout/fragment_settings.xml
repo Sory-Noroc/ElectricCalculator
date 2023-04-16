@@ -36,7 +36,6 @@
         app:layout_constraintLeft_toLeftOf="parent"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:id="@+id/price_input_layout"
         android:layout_width="180dp"
         android:layout_height="wrap_content"

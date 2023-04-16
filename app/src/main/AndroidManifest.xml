@@ -15,7 +15,7 @@
         <activity
             android:name=".ui.MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.ElectriCost.NoActionBar">
+            android:theme="@style/Theme.ElectriCost">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
