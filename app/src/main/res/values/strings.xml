@@ -30,4 +30,11 @@
     <string name="calculate_your_electric_costs">Calculate your electric costs</string>
     <string name="elecost">EleCost</string>
     <string name="add_a_new_electrical_machine">Add a new electrical machine</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="please_input_your_country_or_give_us_access_to_your_location">Please input your country or give us access to your location</string>
+    <string name="confirm">Confirm</string>
+    <string name="or">Or</string>
+    <string name="your_location_helps_us">Your location helps us determine your currency and price of electricity</string>
+    <string name="allow_location_access">Allow Location Access</string>
 </resources>

@@ -17,4 +17,8 @@ class MeasurementTest {
         assertEquals(testDevice.apply { cost = 1000000000 }.formatCost(), "1B")
         assertEquals(testDevice.apply { cost = 999999999 }.formatCost(), "999M")
     }
+
+    fun text_rest_api() {
+
+    }
 }
