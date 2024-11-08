@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FirstOpenFragment"
+    android:padding="30dp"
+    android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/message_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/margin_interior"
+            android:text="@string/please_input_your_country_or_give_us_access_to_your_location"
+            android:layout_above="@id/first_country_spinner"/>
+
+        <Spinner
+            android:id="@+id/first_country_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/margin_interior"
+            android:layout_above="@id/confirm_button"/>
+
+        <Button
+            android:id="@+id/confirm_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/margin_interior"
+            android:text="@string/confirm"
+            android:layout_above="@id/or"/>
+
+        <TextView
+            android:id="@+id/or"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/or"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="@dimen/margin_interior"/>
+
+        <Button
+            android:id="@+id/allow_access_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/allow_location_access"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/margin_interior"
+            android:layout_below="@id/or"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/your_location_helps_us"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/allow_access_button"/>
+
+        <androidx.appcompat.widget.ActionMenuView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+</RelativeLayout>
