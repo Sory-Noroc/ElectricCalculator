@@ -37,4 +37,7 @@
     <string name="or">Or</string>
     <string name="your_location_helps_us">Your location helps us determine your currency and price of electricity</string>
     <string name="allow_location_access">Allow Location Access</string>
+    <string name="choose_the_desired_currency">Choose the desired currency</string>
+    <string name="please_input_the_electricity_price_n_price_per_kwh">Please input the electricity price\n(price per kWh)</string>
+    <string name="ex_1_50">ex. 1.50</string>
 </resources>
