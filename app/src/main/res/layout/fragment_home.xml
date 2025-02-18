@@ -29,7 +29,7 @@
             android:layout_weight="0.5"
             android:layout_height="wrap_content"
             android:id="@+id/va_button"
-            android:text="VOLT AND AMP"/>
+            android:text="@string/volt_and_amp"/>
 
     </com.google.android.material.button.MaterialButtonToggleGroup>
 
@@ -37,12 +37,12 @@
         android:id="@+id/wattage_input_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:hint="Input Power"
-        app:helperText="ex. 50(W)"
+        android:hint="@string/input_power"
+        app:helperText="ex. 50W"
         android:layout_marginBottom="@dimen/margin_exterior"
-        android:layout_margin="@dimen/margin_interior">
+        android:layout_margin="@dimen/margin_interior"
+        android:layout_above="@id/amp_input_layout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/wattage_input_field"
@@ -52,13 +52,30 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/amp_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:hint="Input Amperage"
+        app:helperText="ex. 20A"
+        android:layout_marginBottom="@dimen/margin_exterior"
+        android:layout_margin="@dimen/margin_interior">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
     <Button
         android:id="@+id/confirm_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/wattage_input_layout"
-        android:text="Confirm"/>
+        android:layout_below="@id/amp_input_layout"
+        android:text="@string/confirm"/>
 
     <ImageView
         android:layout_width="wrap_content"

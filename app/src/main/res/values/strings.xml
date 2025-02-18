@@ -42,4 +42,6 @@
     <string name="ex_1_50">ex. 1.50</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="volt_and_amp">VOLT AND AMP</string>
+    <string name="input_power">Input Power</string>
 </resources>
