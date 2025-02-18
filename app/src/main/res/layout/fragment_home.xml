@@ -78,13 +78,62 @@
         android:text="@string/confirm"/>
 
     <ImageView
+        android:id="@+id/helper_image"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/confirm_button"/>
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        />
+        android:layout_below="@id/helper_image">
+
+        <TextView
+            android:id="@+id/results_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Results"/>
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/time_measurement_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:singleSelection="true"
+            app:selectionRequired="true"
+            app:checkedButton="@id/hour_measurement"
+            android:layout_below="@id/results_textview">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/hour_measurement"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="HOUR"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/day_measurement"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="DAY"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/month_measurement"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="MONTH"/>
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <TextView
+            android:id="@+id/result_cost_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/time_measurement_group"
+            android:text="$1.24 per hour"/>
+
+    </RelativeLayout>
 
 </RelativeLayout>
